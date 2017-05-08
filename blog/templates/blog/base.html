@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="show a blog">
+    <title>&nbsp;&nbsp;KAI &nbsp; BLOG &nbsp;&nbsp;</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+    <link rel="stylesheet" href="http://picturebag.qiniudn.com/blog.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+    <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shCore.js"></script>
+    <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushPython.js"></script>
+    <script type="text/javascript" src="/static/syntaxhighlighter/scripts/shBrushJava.js"></script>
+    <link href="/static/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css">
+    <link href="/static/syntaxhighlighter/styles/shCoreDefault.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+        <div class="header">
+            <h1 class="brand-title">kai blog</h1>
+            <h2 class="brand-tagline">Welcome to my Blog</h2>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a class="pure-button" href="{% url 'blog:index' %}">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="#">Tag</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="{% url 'blog:edit_page' 0 %}">New</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="pure-button" href="#">About</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="content pure-u-1 pure-u-md-3-4">
+        <div>
+            {%block content%}{%endblock%}
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

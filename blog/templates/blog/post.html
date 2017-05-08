@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<script type="text/javascript" charset="utf8" src="/static/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" charset="utf8" src="/static/kindeditor/lang/zh_CN.js"></script>
+<script>
+
+    var editor;
+       KindEditor.ready(function(K){
+          editor = K.create('textarea[name="content"]',{
+
+          });
+      });
+
+
+</script>
+<div class="posts">
+    <section class="post">
+            <form action="{% url 'blog:edit_action' %}" class="pure-form pure-form-stacked" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="blog_id" value="{{ blog.id | default:'0' }}">
+              <label>标题
+                <input type="text" name="title" value="{{ blog.title }}">
+              </label><br>
+              <label>作者
+                <input type="text" name="author" value="{{ blog.author }}">
+              </label><br>
+              <label>内容
+                <textarea style="width:700px;height:400px;" name='content'>
+                    {{blog.content}}
+                </textarea>
+              </label><br>
+              <input type="submit" value="提交" class="pure-button">
+            </form>
+    </section>
+</div>
+{% endblock %}
