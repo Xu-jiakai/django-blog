@@ -24,16 +24,16 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="pure-button" href="{% url 'blog:index' %}">Blog</a>
+                        <a class="pure-button" href="{% url 'blog:index' %}">主页</a>
+                    </li>
+                    <!--<li class="nav-item">-->
+                        <!--<a class="pure-button" href="#">Tag</a>-->
+                    <!--</li>-->
+                    <li class="nav-item">
+                        <a class="pure-button" href="{% url 'blog:edit_page' 0 %}">新增</a>
                     </li>
                     <li class="nav-item">
-                        <a class="pure-button" href="#">Tag</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="{% url 'blog:edit_page' 0 %}">New</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="#">About</a>
+                        <a class="pure-button" href="{% url 'blog:aboutMe' %}">关于我</a>
                     </li>
                 </ul>
             </nav>

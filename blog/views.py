@@ -13,14 +13,8 @@ def index(request):
     return render(request, 'blog/index.html', {'blogs': blogs})
 
 
-'''
-博客内容页
-'''
 
 
-def blog_page(request, blog_id):
-    blog = models.Blog.objects.get(pk=blog_id)
-    return render(request, 'blog/detail.html', {'blog': blog})
 
 
 '''
@@ -59,3 +53,33 @@ def edit_action(request):
     blog.save()
 
     return render(request, 'blog/detail.html', {'blog': blog})
+
+
+'''
+博客内容页
+评论响应
+'''
+def get_details(request, blog_id):
+    try:
+        blog = models.Blog.objects.get(id=blog_id)
+    except models.Blog.DoesNotExist:
+        raise Http404
+    if request.method == 'GET':
+        form = CommentForm()
+    else:
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            cleaned_data = form.cleaned_data
+            cleaned_data['blog'] = blog
+            models.Comment.objects.create(**cleaned_data)
+    ctx = {
+        'blog': blog,
+        'comments': blog.comment_set.all().order_by('-created'),
+        'form': form
+    }
+    return render(request, 'blog/detail.html', ctx)
+'''
+关于我
+'''
+def aboutMe(request):
+    return render(request,'blog/aboutMe.html')

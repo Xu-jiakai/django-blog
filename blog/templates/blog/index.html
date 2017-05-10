@@ -17,7 +17,7 @@
         <div class="post-description">
             <p>
                 {{blog.content | truncatechars:200}}<br>
-                <a class="pure-button" href="{% url 'blog:blog_page' blog.id %}" >Continue Reading...</a>
+                <a class="pure-button" href="{% url 'blog:get_details' blog.id %}" >Continue Reading...</a>
             </p>
         </div>
     </section>
